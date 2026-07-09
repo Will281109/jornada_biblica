@@ -2,114 +2,126 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Jornada Bíblica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jornada Bíblica 2.0</title>
+    
     <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body class="dark-mode">
+<body class="v2-theme">
+    
     <div id="app">
-        <!-- Barra Superior -->
-        <header class="top-bar">
-       
-            
+        
+        <header class="app-header">
+            <!-- Tornamos a pill de ofensiva clicável -->
+            <div class="status-pill highlight-streak" id="streak-trigger" style="cursor: pointer;" title="Ver Calendário de Ofensivas">
+                <i class="fa-solid fa-fire-flame-curved"></i>
+                <span id="user-streak">0</span>
+            </div>
+            <div class="status-pill highlight-coin" style="cursor: pointer;" title="Abrir Loja">
+                <i class="fa-solid fa-star"></i>
+                <span id="user-coins">0</span>
+            </div>
+            <div class="status-pill highlight-heart">
+                <i class="fa-solid fa-heart"></i>
+                <span id="user-lives">5</span>
+            </div>
         </header>
 
-        <!-- Conteúdo Principal -->
-        <main id="content">
-            <!-- Tela de Jornada -->
-            <section id="screen-journey" class="screen active">
-                <h1 class="screen-title">Jornada Bíblica</h1>
-                <!-- Card de Cidade Atual -->
-                <div id="city-card" class="city-card">
-                    <span id="city-name">Carregando...</span>
-                    <span class="city-arrow">▼</span>
-                </div>
-                <!-- Modal de Cidades -->
-                <div id="cities-modal" class="cities-modal hidden">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2>Cidades da Jornada</h2>
-                            <button id="close-modal" class="close-modal">✕</button>
-                        </div>
-                        <div id="cities-list" class="cities-list">
-                            <!-- Lista de cidades será renderizada aqui -->
-                        </div>
-                    </div>
-                </div>
-                <div id="journey-container" class="journey-container">
-                    <!-- Fase atual será renderizada aqui -->
-                </div>
-            </section>
+        <main id="screen-container">
+            
+            <section id="screen-journey" class="app-screen active" data-src="paginas/jornada.html"></section>
+            <section id="screen-missions" class="app-screen" data-src="paginas/missoes.html"></section>
+            <section id="screen-studies" class="app-screen" data-src="paginas/estudos.html"></section>
+            
+            <section id="screen-telegram" class="app-screen" data-src="paginas/grupo.html"></section>
+            
+            <section id="screen-flashcards" class="app-screen" data-src="paginas/Flashcards.html"></section>
+            
+            <section id="screen-profile" class="app-screen" data-src="paginas/perfil.html"></section>
+            <section id="screen-shop" class="app-screen" data-src="paginas/loja.html"></section>
+            <section id="screen-lives" class="app-screen" data-src="paginas/vidas.html"></section>
 
-            <!-- Tela de Missões -->
-            <section id="screen-missions" class="screen">
-                <h1 class="screen-title">Missões Diárias</h1>
-                <div id="missions-container" class="missions-container">
-                    <!-- Missões serão renderizadas aqui -->
-                </div>
-            </section>
-
-            <!-- Tela de Estudos -->
-            <section id="screen-studies" class="screen">
-  <h1 class="screen-title">Estudos Bíblicos</h1>
-
-  <!-- Barra de busca -->
-  <div class="search-bar">
-    <input type="text" id="search-studies" placeholder="🔍 Buscar estudos..." />
-  </div>
-
-  <!-- Container dos cards -->
-  <div id="studies-container" class="studies-container"></div>
-
-  <!-- Modal para exibir o estudo completo -->
-  <div id="study-modal" class="modal hidden">
-    <div class="modal-content">
-      <span id="close-study" class="close-btn">&times;</span>
-      <h2 id="modal-title"></h2>
-      <div id="modal-content-text"></div>
-    </div>
-  </div>
-</section>
-
-            <!-- Tela de Perfil -->
-            <section id="screen-profile" class="screen">
-                <h1 class="screen-title">Perfil</h1>
-                <div id="profile-container" class="profile-container">
-                    <!-- Perfil será renderizado aqui -->
-                </div>
-            </section>
-
-            <!-- Tela de Quiz -->
-            <section id="screen-quiz" class="screen">
-                <div id="quiz-container" class="quiz-container">
-                    <!-- Quiz será renderizado aqui -->
-                </div>
-            </section>
         </main>
 
-<!-- Barra Inferior de Navegação -->
-<nav class="bottom-bar">
-  <div class="nav-item active" id="nav-journey">
-    <i class="fa-solid fa-route nav-icon"></i>
-    <span class="nav-label">Jornada</span>
-  </div>
-  <div class="nav-item" id="nav-studies">
-    <i class="fa-solid fa-book-open nav-icon"></i>
-    <span class="nav-label">Estudos</span>
-  </div>
-  <div class="nav-item" id="nav-telegram">
-    <i class="fa-brands fa-telegram nav-icon"></i>
-    <span class="nav-label">Telegram</span>
-  </div>
-  <div class="nav-item" id="nav-profile">
-    <i class="fa-solid fa-user nav-icon"></i>
-    <span class="nav-label">Perfil</span>
-  </div>
-</nav>
+        <nav class="app-navbar">
+            <div class="nav-button active" id="nav-journey">
+                <i class="fa-solid fa-compass"></i>
+                <span>Jornada</span>
+            </div>
+            <div class="nav-button" id="nav-studies">
+                <i class="fa-solid fa-bookmark"></i>
+                <span>Estudos</span>
+            </div>
+            
+            <div class="nav-button" id="nav-flashcards">
+                <i class="fa-solid fa-clone"></i>
+                <span>Flashcards</span>
+            </div>
+            
+            <div class="nav-button" id="nav-missions">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Missões</span>
+            </div>
+            <div class="nav-button" id="nav-profile">
+                <i class="fa-solid fa-user-astronaut"></i>
+                <span>Perfil</span>
+            </div>
+        </nav>
 
-    <script src="data/journey_data.js"></script>
+    </div>
+
+    <!-- ESTRUTURA PROFISSIONAL DO MODAL DE OFENSIVA (Fica oculto por padrão via CSS ou classe .hidden) -->
+    <div id="streak-modal-overlay" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+        <div style="background: var(--v2-bg-surface, #1e1e24); width: 90%; max-width: 380px; border-radius: 20px; padding: 20px; box-sizing: border-box; border: 1px solid var(--border-subtle, #2a2a32); text-align: center; color: var(--text-main, #ffffff); font-family: 'Plus Jakarta Sans', sans-serif;">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3 style="margin: 0; font-weight: 800; font-size: 1.1rem;">Histórico de Ofensiva</h3>
+                <button id="btn-close-streak-modal" style="background: none; border: none; font-size: 1.2rem; color: var(--text-muted, #8a8a8a); cursor: pointer;">✕</button>
+            </div>
+
+            <!-- Bloco de Recordes -->
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <div style="flex: 1; background: rgba(223, 106, 43, 0.08); border: 1px solid rgba(223, 106, 43, 0.2); padding: 12px; border-radius: 14px;">
+                    <span style="font-size: 0.75rem; color: var(--text-muted, #8a8a8a); display: block; font-weight: 600;">Atual</span>
+                    <strong id="modal-current-streak" style="font-size: 1.4rem; color: #df6a2b; font-weight: 800;">0</strong>
+                </div>
+                <div style="flex: 1; background: rgba(212, 163, 39, 0.08); border: 1px solid rgba(212, 163, 39, 0.2); padding: 12px; border-radius: 14px;">
+                    <span style="font-size: 0.75rem; color: var(--text-muted, #8a8a8a); display: block; font-weight: 600;">Recorde</span>
+                    <strong id="modal-max-streak" style="font-size: 1.4rem; color: #D4A327; font-weight: 800;">0</strong>
+                </div>
+            </div>
+
+            <!-- Cabeçalho do Calendário (Mês e Ano) -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 0 5px;">
+                <button id="btn-prev-month" style="background: none; border: none; color: var(--text-main); cursor: pointer; padding: 5px;"><i class="fa-solid fa-chevron-left"></i></button>
+                <span id="calendar-month-year" style="font-weight: 700; font-size: 0.9rem;">Janeiro 2026</span>
+                <button id="btn-next-month" style="background: none; border: none; color: var(--text-main); cursor: pointer; padding: 5px;"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+            <!-- Dias da Semana -->
+            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; font-size: 0.7rem; font-weight: 700; color: var(--text-muted, #8a8a8a); margin-bottom: 8px;">
+                <div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div><div>QUI</div><div>SEX</div><div>SÁB</div>
+            </div>
+
+            <!-- Grid de Dias do Mês -->
+            <div id="calendar-days-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;"></div>
+
+            <p style="font-size: 0.75rem; color: var(--text-muted, #8a8a8a); margin: 15px 0 0 0; line-height: 1.4;">
+                Conclua qualquer fase ou leitura de estudo para marcar o dia de hoje!
+            </p>
+        </div>
+    </div>
+
+    <script src="js/perguntas.js"></script>
+    <script src="js/missoes.js"></script> 
+    <script src="js/estudos_banco.js"></script>
+    <script src="js/flashcards_banco.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
-
